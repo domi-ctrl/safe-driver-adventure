@@ -21,15 +21,8 @@
             background-color: #EE6055;
             color: white;
         }
-        h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        h1 {font-size: 3em; margin: 0;}
+        main {padding: 20px; max-width: 800px; margin: 0 auto;}
         .container {
             margin: 20px 0;
             padding: 5px;
@@ -43,14 +36,8 @@
             align-items: center;
             font-size: 1.5em;
         }
-        audio {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .buttons {
-            text-align: center;
-            margin-top: 10px;
-        }
+        audio {width: 100%; border-radius: 10px;}
+        .buttons {text-align: center; margin-top: 10px;}
         button {
             font-family: 'Ojuju', cursive;
             background-color: #EE6055;
@@ -61,12 +48,22 @@
             cursor: pointer;
             border-radius: 70px;
             font-size: 1.5em;
-	    font-weight: bold;
+			font-weight: bold;
         }
-        button:hover {
-            background-color: #604a84;
+        button:hover {background-color: #604a84;}
+		img {width: inherit; height: inherit;}
+        .back-icon {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            background: none;
         }
-		img{width:inherit;height:inherit;}
+        .back-icon:hover {color: #604a84; background: none;}
+        .hidden {display: none;}
     </style>
 </head>
 <body>
@@ -74,6 +71,9 @@
         <h1>Safe Driver Adventure</h1>
     </header>
     <main>
+        <!-- Back Button -->
+        <button class="back-icon hidden" id="back-button" onclick="goBack()">&#8592;</button>
+        
         <!-- Audio Container -->
         <div class="container" id="audio-container">
 			<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFB8F7wSxxYLLk4bImT4Q-T4_7dSESam46Z8qGDVxETm7zu_Q2vmZtX6QhG_G0zpOiLORV1JwQHy64SA5gXU0uAmSsnHYooOtEaOfLdvCiJkCAebV0F9cTJQCSz4SVufrC1FnjPOjWXYkI/s800/car_woman09_question.png"> 
@@ -86,11 +86,10 @@
             <button onclick="selectSet(2)">English</button>
         </div>
         <!-- Buttons for Levels (hidden initially) -->
-        <div class="buttons" id="level-buttons" style="display: none;">
+        <div class="buttons hidden" id="level-buttons">
             <button onclick="playAudio('')">Level 1</button>
             <button onclick="playAudio('')">Level 2</button>
             <button onclick="playAudio('')">Level 3</button>
-            <button onclick="goBack()">Back</button>
         </div>
     </main>
     <script>
@@ -114,8 +113,9 @@
             }
 
             // Show the levels and hide the set buttons
-            document.getElementById('set-buttons').style.display = 'none';
-            document.getElementById('level-buttons').style.display = 'block';
+            document.getElementById('set-buttons').classList.add('hidden');
+            document.getElementById('level-buttons').classList.remove('hidden');
+            document.getElementById('back-button').classList.remove('hidden');
 
             // Update the container message
             const container = document.getElementById('audio-container');
@@ -132,8 +132,9 @@
             selectedSet = null;
 
             // Show set buttons and hide level buttons
-            document.getElementById('set-buttons').style.display = 'block';
-            document.getElementById('level-buttons').style.display = 'none';
+            document.getElementById('set-buttons').classList.remove('hidden');
+            document.getElementById('level-buttons').classList.add('hidden');
+            document.getElementById('back-button').classList.add('hidden');
 
             // Update the container message
             const container = document.getElementById('audio-container');
