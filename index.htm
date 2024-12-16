@@ -8,7 +8,6 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Ojuju:wght@200..800&display=swap" rel="stylesheet">
     <style>
-        /* Apply the Mansalva font to the whole page */
         body {
             font-family: 'Ojuju', cursive;
             margin: 0;
@@ -38,11 +37,11 @@
             border: 2px solid #EE6055;
             border-radius: 15px;
             text-align: center;
-            height: 184.5px; /* Fixed height for the audio container */
+            height: 184.5px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2em;
+            font-size: 1.5em;
         }
         audio {
             width: 100%;
@@ -62,11 +61,12 @@
             cursor: pointer;
             border-radius: 70px;
             font-size: 1.2em;
-			font-weight: bold
+			font-weight: bold;
         }
         button:hover {
             background-color: #604a84;
         }
+		img{width:inherit;height:inherit;}
     </style>
 </head>
 <body>
@@ -76,17 +76,71 @@
     <main>
         <!-- Audio Container -->
         <div class="container" id="audio-container">
-            <p>Pick a mode!</p>
+			<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFB8F7wSxxYLLk4bImT4Q-T4_7dSESam46Z8qGDVxETm7zu_Q2vmZtX6QhG_G0zpOiLORV1JwQHy64SA5gXU0uAmSsnHYooOtEaOfLdvCiJkCAebV0F9cTJQCSz4SVufrC1FnjPOjWXYkI/s800/car_woman09_question.png"> 
+        	<p>Choose an audio set!</p>
+		</div>
+		
+        <!-- Buttons for Selecting Audio Set -->
+        <div class="buttons" id="set-buttons">
+            <button onclick="selectSet(1)">Audio Set 1</button>
+            <button onclick="selectSet(2)">Audio Set 2</button>
         </div>
-        <!-- Buttons -->
-        <div class="buttons">
-            <button onclick="playAudio('lvl1.MP3')">Easy</button>
-            <button onclick="playAudio('lvl2.MP3')">Medium</button>
-            <button onclick="playAudio('lvl3.MP3')">Hard</button>
+        <!-- Buttons for Levels (hidden initially) -->
+        <div class="buttons" id="level-buttons" style="display: none;">
+            <button onclick="playAudio('')">Level 1</button>
+            <button onclick="playAudio('')">Level 2</button>
+            <button onclick="playAudio('')">Level 3</button>
+            <button onclick="goBack()">Back</button>
         </div>
     </main>
     <script>
-        // JavaScript function to update the container with an audio element
+        // Store selected audio set
+        let selectedSet = null;
+
+        // Function to select an audio set
+        function selectSet(setNumber) {
+            selectedSet = setNumber;
+
+            // Update level buttons with correct audio files
+            const levelButtons = document.getElementById('level-buttons').children;
+            if (setNumber === 1) {
+                levelButtons[0].setAttribute('onclick', "playAudio('lvl1_set1.MP3')");
+                levelButtons[1].setAttribute('onclick', "playAudio('lvl2_set1.MP3')");
+                levelButtons[2].setAttribute('onclick', "playAudio('lvl3_set1.MP3')");
+            } else if (setNumber === 2) {
+                levelButtons[0].setAttribute('onclick', "playAudio('lvl1_set2.MP3')");
+                levelButtons[1].setAttribute('onclick', "playAudio('lvl2_set2.MP3')");
+                levelButtons[2].setAttribute('onclick', "playAudio('lvl3_set2.MP3')");
+            }
+
+            // Show the levels and hide the set buttons
+            document.getElementById('set-buttons').style.display = 'none';
+            document.getElementById('level-buttons').style.display = 'block';
+
+            // Update the container message
+            const container = document.getElementById('audio-container');
+            if (setNumber === 1) {
+                container.innerHTML = '<p>Pilih level anda!</p>';
+            } else {
+                container.innerHTML = '<p>Choose your level!</p>';
+            }
+        }
+
+        // Function to go back to set selection
+        function goBack() {
+            // Reset selected set
+            selectedSet = null;
+
+            // Show set buttons and hide level buttons
+            document.getElementById('set-buttons').style.display = 'block';
+            document.getElementById('level-buttons').style.display = 'none';
+
+            // Update the container message
+            const container = document.getElementById('audio-container');
+            container.innerHTML = `<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFB8F7wSxxYLLk4bImT4Q-T4_7dSESam46Z8qGDVxETm7zu_Q2vmZtX6QhG_G0zpOiLORV1JwQHy64SA5gXU0uAmSsnHYooOtEaOfLdvCiJkCAebV0F9cTJQCSz4SVufrC1FnjPOjWXYkI/s800/car_woman09_question.png"><p>Choose an audio set!</p>`;
+        }
+
+        // Function to play audio
         function playAudio(audioSrc) {
             const container = document.getElementById('audio-container');
             container.innerHTML = `
