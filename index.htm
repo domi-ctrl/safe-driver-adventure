@@ -1,12 +1,101 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>Safe Driver Adventure</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Driver Adventure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Ojuju:wght@200..800&display=swap" rel="stylesheet">
+    <style>
+        /* Apply the Mansalva font to the whole page */
+        body {
+            font-family: 'Ojuju', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #FFD97D;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #EE6055;
+            color: white;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .container {
+            margin: 20px 0;
+            padding: 5px;
+            background-color: #fff;
+            border: 2px solid #EE6055;
+            border-radius: 15px;
+            text-align: center;
+            height: 184.5px; /* Fixed height for the audio container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+        audio {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 10px;
+        }
+        button {
+            font-family: 'Ojuju', cursive;
+            background-color: #EE6055;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 70px;
+            font-size: 1.2em;
+			font-weight: bold
+        }
+        button:hover {
+            background-color: #604a84;
+        }
+    </style>
 </head>
-
 <body>
-this page is not done yet.. just wait okay :D
+    <header>
+        <h1>Safe Driver Adventure</h1>
+    </header>
+    <main>
+        <!-- Audio Container -->
+        <div class="container" id="audio-container">
+            <p>Pick a mode!</p>
+        </div>
+        <!-- Buttons -->
+        <div class="buttons">
+            <button onclick="playAudio('lvl1.MP3')">Easy</button>
+            <button onclick="playAudio('lvl2.MP3')">Medium</button>
+            <button onclick="playAudio('lvl3.MP3')">Hard</button>
+        </div>
+    </main>
+    <script>
+        // JavaScript function to update the container with an audio element
+        function playAudio(audioSrc) {
+            const container = document.getElementById('audio-container');
+            container.innerHTML = `
+                <audio controls>
+                    <source src="${audioSrc}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            `;
+        }
+    </script>
 </body>
 </html>
