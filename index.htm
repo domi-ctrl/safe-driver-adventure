@@ -87,9 +87,9 @@
         </div>
         <!-- Buttons for Levels (hidden initially) -->
         <div class="buttons hidden" id="level-buttons">
-            <button onclick="playAudio('')">Level 1</button>
-            <button onclick="playAudio('')">Level 2</button>
-            <button onclick="playAudio('')">Level 3</button>
+            <button id="level-1" onclick="playAudio('')"></button>
+            <button id="level-2" onclick="playAudio('')"></button>
+            <button id="level-3" onclick="playAudio('')"></button>
         </div>
     </main>
     <script>
@@ -100,16 +100,25 @@
         function selectSet(setNumber) {
             selectedSet = setNumber;
 
-            // Update level buttons with correct audio files
-            const levelButtons = document.getElementById('level-buttons').children;
+            // Update level buttons with correct audio files and names
+            const level1 = document.getElementById('level-1');
+            const level2 = document.getElementById('level-2');
+            const level3 = document.getElementById('level-3');
+
             if (setNumber === 1) {
-                levelButtons[0].setAttribute('onclick', "playAudio('lvl1.MP3')");
-                levelButtons[1].setAttribute('onclick', "playAudio('lvl2.MP3')");
-                levelButtons[2].setAttribute('onclick', "playAudio('lvl3.MP3')");
+                level1.innerText = "Tahap 1"; // Level 1 in Malay
+                level2.innerText = "Tahap 2"; // Level 2 in Malay
+                level3.innerText = "Tahap 3"; // Level 3 in Malay
+                level1.setAttribute('onclick', "playAudio('lvl1.MP3')");
+                level2.setAttribute('onclick', "playAudio('lvl2.MP3')");
+                level3.setAttribute('onclick', "playAudio('lvl3.MP3')");
             } else if (setNumber === 2) {
-                levelButtons[0].setAttribute('onclick', "playAudio('eng-lvl1.mp3')");
-                levelButtons[1].setAttribute('onclick', "playAudio('eng-lvl2.mp3')");
-                levelButtons[2].setAttribute('onclick', "playAudio('eng-lvl3.mp3')");
+                level1.innerText = "Level 1"; // Level 1 in English
+                level2.innerText = "Level 2"; // Level 2 in English
+                level3.innerText = "Level 3"; // Level 3 in English
+                level1.setAttribute('onclick', "playAudio('eng-lvl1.mp3')");
+                level2.setAttribute('onclick', "playAudio('eng-lvl2.mp3')");
+                level3.setAttribute('onclick', "playAudio('eng-lvl3.mp3')");
             }
 
             // Show the levels and hide the set buttons
@@ -120,7 +129,7 @@
             // Update the container message
             const container = document.getElementById('audio-container');
             if (setNumber === 1) {
-                container.innerHTML = '<p>Pilih level anda!</p>';
+                container.innerHTML = '<p>Pilih tahap anda!</p>';
             } else {
                 container.innerHTML = '<p>Choose your level!</p>';
             }
