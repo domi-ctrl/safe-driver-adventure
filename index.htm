@@ -12,13 +12,13 @@
             font-family: 'Ojuju', cursive;
             margin: 0;
             padding: 0;
-            background-color: #FFD97D;
+            background-color: #BEE7E8;
             color: #333;
         }
         header {
             text-align: center;
             padding: 20px;
-            background-color: #EE6055;
+            background-color: #7D8CC4;
             color: white;
         }
         h1 {font-size: 3em; margin: 0;}
@@ -27,7 +27,7 @@
             margin: 33px 0;
             padding: 5px;
             background-color: #fff;
-            border: 2px solid #EE6055;
+            border: 2px solid #726DA8;
             border-radius: 15px;
             text-align: center;
             height: 184.5px;
@@ -40,7 +40,7 @@
         .buttons {text-align: center; margin-top: 10px;}
         button {
             font-family: 'Ojuju', cursive;
-            background-color: #EE6055;
+            background-color: #7D8CC4;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -58,12 +58,13 @@
             left: 2px;
             font-size: 3em;
             cursor: pointer;
-            color: #EE6055;
+            color: #7D8CC4;
             border: none;
             background: none;
         }
         .back-icon:hover {color: #604a84; background: none;}
         .hidden {display: none;}
+		.style7 {font-size: 0.8em}
     </style>
 </head>
 <body>
@@ -76,11 +77,14 @@
         
         <!-- Audio Container -->
         <div class="container" id="audio-container">
-			<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFB8F7wSxxYLLk4bImT4Q-T4_7dSESam46Z8qGDVxETm7zu_Q2vmZtX6QhG_G0zpOiLORV1JwQHy64SA5gXU0uAmSsnHYooOtEaOfLdvCiJkCAebV0F9cTJQCSz4SVufrC1FnjPOjWXYkI/s800/car_woman09_question.png"> 
-        	<p>Choose an audio set!</p>
+			<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgocHpevh-UZdlVo6yjXOEvpnAJR6l_xj11O6LjOZkyHQSgIk9hzadj-iJKS-YVcoT8pNm_8qzhQJ56DC2dQoX-8zKK-XEq8zXA2CCnvCSEiw7556nqnfa1bxWuyk1ikP0nbuXyqENssGym/s800/car_man09_question.png"> 
+       	  <p>Jom Mulakan!<br>
+       	    <span class="style7"><em>Let's get started!</em></span></p>
 		</div>
 		
+        <span class="style7"><em>
         <!-- Buttons for Selecting Audio Set -->
+                </em></span>        
         <div class="buttons" id="set-buttons">
             <button onclick="selectSet(1)">Bahasa Melayu</button>
             <button onclick="selectSet(2)">English</button>
@@ -129,9 +133,9 @@
             // Update the container message
             const container = document.getElementById('audio-container');
             if (setNumber === 1) {
-                container.innerHTML = '<p>Pilih tahap anda!</p>';
+                container.innerHTML = '<p>Pilih tahap anda!</p> <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWlzB7ZQx87d_N3maZOhGtZO9H5Jm01BpFSy_kJ2pDDRGEoXPeKUQtVHF4mBSV27fcfsII-_q6Nz-mEg4j8ysUihMB7JPL14mKuiB-R0oz4PzFm5sDIWUx4CX6ACu19-Ym0skphvwgGsSO/s800/unten_car_navigation.png">';
             } else {
-                container.innerHTML = '<p>Choose your level!</p>';
+                container.innerHTML = '<p>Choose your level!</p> <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWlzB7ZQx87d_N3maZOhGtZO9H5Jm01BpFSy_kJ2pDDRGEoXPeKUQtVHF4mBSV27fcfsII-_q6Nz-mEg4j8ysUihMB7JPL14mKuiB-R0oz4PzFm5sDIWUx4CX6ACu19-Ym0skphvwgGsSO/s800/unten_car_navigation.png">';
             }
         }
 
@@ -147,7 +151,9 @@
 
             // Update the container message
             const container = document.getElementById('audio-container');
-            container.innerHTML = `<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFB8F7wSxxYLLk4bImT4Q-T4_7dSESam46Z8qGDVxETm7zu_Q2vmZtX6QhG_G0zpOiLORV1JwQHy64SA5gXU0uAmSsnHYooOtEaOfLdvCiJkCAebV0F9cTJQCSz4SVufrC1FnjPOjWXYkI/s800/car_woman09_question.png"><p>Choose an audio set!</p>`;
+            container.innerHTML = `<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgocHpevh-UZdlVo6yjXOEvpnAJR6l_xj11O6LjOZkyHQSgIk9hzadj-iJKS-YVcoT8pNm_8qzhQJ56DC2dQoX-8zKK-XEq8zXA2CCnvCSEiw7556nqnfa1bxWuyk1ikP0nbuXyqENssGym/s800/car_man09_question.png"> 
+       	  <p>Jom Mulakan!<br>
+       	    <span class="style7"><em>Let's get started!</em></span></p>`;
         }
 
         // Function to play audio
